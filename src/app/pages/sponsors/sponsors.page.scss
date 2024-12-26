@@ -1,0 +1,14 @@
+/* Add pointer cursor to the entire card */
+.clickable-card {
+    cursor: pointer; /* Makes the card clickable */
+    transition: transform 0.2s; /* Adds a subtle hover effect */
+  }
+  
+  .clickable-card:hover {
+    transform: scale(1.02); /* Slightly enlarge the card on hover */
+  }
+  
+  /* Underline the title */
+  .underline-title:hover {
+    text-decoration: underline;
+  }

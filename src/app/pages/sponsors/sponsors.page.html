@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>sponsors page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngFor="let sponsor of sponsors">
+    <ion-card class="clickable-card" [routerLink]="[sponsor.id]">
+      <ion-card-header>
+        <ion-card-title class="underline-title"
+          >{{ sponsor.name }}</ion-card-title
+        >
+        <ion-card-subtitle>
+          {{ sponsor.job_title }}, {{ sponsor.company_name }}
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p><b>Budget:</b> {{ sponsor.budget | currency: 'USD' }}</p>
+        <p><b>Industry:</b> {{ sponsor.industry }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
