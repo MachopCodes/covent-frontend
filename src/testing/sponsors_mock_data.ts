@@ -1,4 +1,4 @@
-import { Sponsor } from 'src/interfaces/sponsor';
+import { Sponsor } from 'src/app/models/sponsor.model';
 
 export const MOCK_SPONSORS: Sponsor[] = [
   {
