@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button>Create Event</ion-button>
+  <div *ngFor="let event of eventData">
+    <ion-card class="clickable-card" [routerLink]="[event.id]">
+      <ion-card-header>
+        <ion-card-title class="underline-title"
+          >{{ event.name }}</ion-card-title
+        >
+        <ion-card-subtitle *ngIf="event.date"
+          >{{ event.date }}</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <p *ngIf="event.location"><b>Location:</b> {{ event.location }}</p>
+        <p><b>Attendees:</b> {{ event.target_attendees }}</p>
+        <p><b>Topics:</b> {{ event.event_overview }}</p>
+        <p><b>Event Sponsors:</b> {{ event.sponsorship_value }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
