@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { EventObject } from 'src/app/models/event.model';
-import { MOCK_EVENT_DATA } from 'src/testing/events_mock_data';
 
 @Component({
   selector: 'app-events',
@@ -9,8 +9,10 @@ import { MOCK_EVENT_DATA } from 'src/testing/events_mock_data';
   standalone: false,
 })
 export class EventsPage implements OnInit {
-  eventData: EventObject[] = MOCK_EVENT_DATA;
-  constructor() {}
+  eventData!: EventObject[];
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.data.subscribe((data) => (this.eventData = data['events']));
+  }
 }

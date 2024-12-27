@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ event ? "Edit Event" : "Create Event" }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Event Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date</ion-label>
+        <ion-datetime formControlName="date" presentation="date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Location</ion-label>
+        <ion-input formControlName="location"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Target Attendees</ion-label>
+        <ion-input formControlName="target_attendees"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Overview</ion-label>
+        <ion-textarea formControlName="event_overview"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sponsorship Value</ion-label>
+        <ion-input formControlName="sponsorship_value" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contact Info</ion-label>
+        <ion-input formControlName="contact_info" type="email"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" [disabled]="eventForm.invalid">
+      {{ event ? "Save Changes" : "Create Event" }}
+    </ion-button>
+  </form>
+</ion-content>

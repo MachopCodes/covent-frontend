@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MOCK_SPONSORS } from 'src/testing/sponsors_mock_data';
+import { ActivatedRoute } from '@angular/router';
+import { Sponsor } from 'src/app/models/sponsor.model';
 
 @Component({
   selector: 'app-view-sponsor',
@@ -8,8 +9,10 @@ import { MOCK_SPONSORS } from 'src/testing/sponsors_mock_data';
   standalone: false,
 })
 export class ViewSponsorPage implements OnInit {
-  sponsor = MOCK_SPONSORS[0];
-  constructor() {}
+  sponsor!: Sponsor;
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.data.subscribe((data) => (this.sponsor = data['sponsor']));
+  }
 }

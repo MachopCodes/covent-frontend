@@ -55,6 +55,8 @@
   </form>
   <div class="a-tags">
     <a>Forgot Password?</a>
-    <a>No Account? Sign Up</a>
+    <a [routerLink]="['/sign-up']" (click)="closeModal()"
+      >No Account? Sign Up</a
+    >
   </div>
 </ion-content>

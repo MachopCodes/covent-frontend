@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>view-event</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/events"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button (click)="openEventModal()">Create Event</ion-button>
+  <ion-card class="clickable-card">
+    <ion-card-header>
+      <ion-card-title class="underline-title"
+        >{{ event.name }}<ion-icon
+          name="create-outline"
+          (click)="openEventModal(event)"
+        ></ion-icon
+      ></ion-card-title>
+      <ion-card-subtitle *ngIf="event.date">{{ event.date }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p *ngIf="event.location"><b>Location:</b> {{ event.location }}</p>
+      <p><b>Attendees:</b> {{ event.target_attendees }}</p>
+      <p><b>Topics:</b> {{ event.event_overview }}</p>
+      <p><b>Event Sponsors:</b> {{ event.sponsorship_value }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

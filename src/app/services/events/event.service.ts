@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { EventObject } from '../../models/event.model';
 import { environment } from 'src/environments/environment.prod';
+import { MOCK_EVENT_DATA } from 'src/testing/events_mock_data';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +15,13 @@ export class EventService {
 
   // Get all events
   index(): Observable<EventObject[]> {
+    return of(MOCK_EVENT_DATA); // MOCK
     return this.http.get<EventObject[]>(`${this.apiUrl}/events`);
   }
 
   // Get a specific event by ID
   get(id: number): Observable<EventObject> {
+    return of(MOCK_EVENT_DATA[0]); // MOCK
     return this.http.get<EventObject>(`${this.apiUrl}/events/${id}`);
   }
 

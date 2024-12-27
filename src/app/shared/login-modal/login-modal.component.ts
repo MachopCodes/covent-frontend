@@ -8,12 +8,19 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.scss'],
-  imports: [FormsModule, ReactiveFormsModule, IonicModule, CommonModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    CommonModule,
+    RouterModule,
+  ],
 })
 export class LoginModalComponent {
   loginForm: FormGroup;
@@ -40,5 +47,9 @@ export class LoginModalComponent {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  closeModal() {
+    this.modalController.dismiss(); // Dismiss the currently open modal
   }
 }
