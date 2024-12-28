@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Proposal } from 'src/app/models/proposal.model';
+import { Proposal, ProposalCreateRequest } from 'src/app/models/proposal.model';
 import { ProposalService } from 'src/app/services/proposals/proposal.service';
 import { Sponsor } from 'src/app/models/sponsor.model';
 import { EventService } from 'src/app/services/events/event.service';
@@ -67,12 +67,21 @@ export class CreateProposalDialogComponent implements OnInit {
     if (this.proposalForm.valid) {
       const formValues = this.proposalForm.value;
 
-      const proposal: Proposal = {
+      const proposal: ProposalCreateRequest = {
         event_id: formValues.event_id,
         sponsor_id: this.sponsor.id,
         owner_id: 1, // Replace with logged-in user's ID
         notes: formValues.notes,
         contact_info: formValues.contactInfo,
+        status: 'Pending',
+        event_snapshot: {
+          name: '',
+          date: '',
+        },
+        sponsor_snapshot: {
+          name: this.sponsor.name,
+          company_name: this.sponsor.company_name,
+        },
       };
 
       this.proposalService.createProposal(proposal).subscribe({

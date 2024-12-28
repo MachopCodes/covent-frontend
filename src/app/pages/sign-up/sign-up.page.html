@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched"
+        class="error"
+      >
+        <p *ngIf="signUpForm.get('name')?.hasError('required')">
+          Name is required.
+        </p>
+        <p *ngIf="signUpForm.get('name')?.hasError('minlength')">
+          Name must be at least 3 characters.
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched"
+        class="error"
+      >
+        <p *ngIf="signUpForm.get('email')?.hasError('required')">
+          Email is required.
+        </p>
+        <p *ngIf="signUpForm.get('email')?.hasError('email')">
+          Please enter a valid email.
+        </p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div
+        *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched"
+        class="error"
+      >
+        <p *ngIf="signUpForm.get('password')?.hasError('required')">
+          Password is required.
+        </p>
+        <p *ngIf="signUpForm.get('password')?.hasError('minlength')">
+          Password must be at least 6 characters.
+        </p>
+      </div>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" [disabled]="signUpForm.invalid"
+      >Sign Up</ion-button
+    >
+  </form>
+</ion-content>

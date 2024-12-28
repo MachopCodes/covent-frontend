@@ -1,0 +1,37 @@
+import { Proposal } from 'src/app/models/proposal.model';
+
+export const MOCK_PROPOSAL_APPROVED: Proposal = {
+  id: 1,
+  event_id: 1,
+  sponsor_id: 1,
+  owner_id: 1,
+  notes: 'Test',
+  contact_info: '123-232-2343',
+  status: 'Approved',
+  event_snapshot: { name: 'Event Name', date: '2024-01-01' },
+  sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
+};
+
+export const MOCK_PROPOSAL_PENDING: Proposal = {
+  id: 2,
+  event_id: 1,
+  sponsor_id: 1,
+  owner_id: 1,
+  notes: 'Test',
+  contact_info: '123-232-2343',
+  status: 'Pending',
+  event_snapshot: { name: 'Event Name', date: '2024-01-01' },
+  sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
+};
+
+export const MOCK_PROPOSAL_REJECTED: Proposal = {
+  id: 3,
+  event_id: 1,
+  sponsor_id: 1,
+  owner_id: 1,
+  notes: 'Test',
+  contact_info: '123-232-2343',
+  status: 'Rejected',
+  event_snapshot: { name: 'Event Name', date: '2024-01-01' },
+  sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
+};

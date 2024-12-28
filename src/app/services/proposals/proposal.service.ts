@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Proposal } from 'src/app/models/proposal.model';
+import { Observable, of } from 'rxjs';
+import { Proposal, ProposalCreateRequest } from 'src/app/models/proposal.model';
 import { environment } from 'src/environments/environment.prod';
+import {
+  MOCK_PROPOSAL_APPROVED,
+  MOCK_PROPOSAL_PENDING,
+  MOCK_PROPOSAL_REJECTED,
+} from 'src/testing/proposals_mock_data';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +17,13 @@ export class ProposalService {
 
   constructor(private http: HttpClient) {}
 
-  // Get all proposals
+  // Get all proposals that I'm the event owner of or the sponsor owner of
   getProposals(): Observable<Proposal[]> {
+    return of([
+      MOCK_PROPOSAL_APPROVED,
+      MOCK_PROPOSAL_PENDING,
+      MOCK_PROPOSAL_REJECTED,
+    ]);
     return this.http.get<Proposal[]>(this.apiUrl);
   }
 
@@ -23,7 +33,7 @@ export class ProposalService {
   }
 
   // Create a new proposal
-  createProposal(proposal: Proposal): Observable<Proposal> {
+  createProposal(proposal: ProposalCreateRequest): Observable<Proposal> {
     return this.http.post<Proposal>(this.apiUrl, proposal);
   }
 

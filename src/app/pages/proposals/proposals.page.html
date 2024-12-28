@@ -1,0 +1,17 @@
+<app-header title="Proposals" back="/"></app-header>
+<ion-content [fullscreen]="true">
+  <h3>My Proposals</h3>
+  <ion-list *ngFor="let proposal of proposals">
+    <ion-item>
+      <ion-label
+        >{{ proposal.event_snapshot.name}} x {{
+        proposal.sponsor_snapshot.company_name}}</ion-label
+      >
+      <ion-badge
+        [color]="proposal.status === 'Approved'? 'success' : proposal.status === 'Pending' ? 'warning' : 'danger'"
+        >{{ proposal.status }}</ion-badge
+      >
+    </ion-item>
+  </ion-list>
+  <h3>Proposals for Me</h3>
+</ion-content>

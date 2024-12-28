@@ -8,6 +8,7 @@ import {
   sponsorGetResolver,
   sponsorIndexResolver,
 } from './resolvers/sponsor.resolver';
+import { proposalIndexResolver } from './resolvers/proposal.resolver';
 
 const routes: Routes = [
   {
@@ -49,6 +50,14 @@ const routes: Routes = [
         (m) => m.ViewEventPageModule
       ),
     resolve: { event: eventGetResolver },
+  },
+  {
+    path: 'proposals',
+    loadChildren: () =>
+      import('./pages/proposals/proposals.module').then(
+        (m) => m.ProposalsPageModule
+      ),
+    resolve: { proposals: proposalIndexResolver },
   },
 ];
 @NgModule({

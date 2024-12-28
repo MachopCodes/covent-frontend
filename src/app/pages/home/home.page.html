@@ -1,8 +1,17 @@
 <app-header title="home"></app-header>
 <ion-content [fullscreen]="true">
   <div class="container">
-    <ion-button [routerLink]="['/sponsors']">Sponsors</ion-button>
-    <ion-button [routerLink]="['/events']">Events</ion-button>
-    <ion-button [routerLink]="['/proposals']">Proposals</ion-button>
+    <div>
+      <p>View Sponsors and propose collaborations for your Events</p>
+      <ion-button [routerLink]="['/sponsors']">Sponsors</ion-button>
+    </div>
+    <div>
+      <p>View and Create your events</p>
+      <ion-button [routerLink]="['/events']">Events</ion-button>
+    </div>
+    <div>
+      <p>View your outbound proposals</p>
+      <ion-button [routerLink]="['/proposals']">Proposals</ion-button>
+    </div>
   </div>
 </ion-content>
