@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Proposal, ProposalCreateRequest } from 'src/app/models/proposal.model';
-import { environment } from 'src/environments/environment.prod';
 import {
   MOCK_PROPOSAL_APPROVED,
   MOCK_PROPOSAL_PENDING,
@@ -12,10 +11,8 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class ProposalService {
-  private apiUrl = `${environment.apiUrl}/proposals`; // Ensure your environment file has `apiUrl`
-
-  constructor(private http: HttpClient) {}
+export class ProposalServiceStub {
+  constructor() {}
 
   // Get all proposals that I'm the event owner of or the sponsor owner of
   getProposals(): Observable<Proposal[]> {
@@ -24,17 +21,16 @@ export class ProposalService {
       MOCK_PROPOSAL_PENDING,
       MOCK_PROPOSAL_REJECTED,
     ]);
-    return this.http.get<Proposal[]>(this.apiUrl);
   }
 
   // Get a specific proposal by ID
   getProposal(id: number): Observable<Proposal> {
-    return this.http.get<Proposal>(`${this.apiUrl}/${id}`);
+    return of(MOCK_PROPOSAL_APPROVED);
   }
 
   // Create a new proposal
   createProposal(proposal: ProposalCreateRequest): Observable<Proposal> {
-    return this.http.post<Proposal>(this.apiUrl, proposal);
+    return of(MOCK_PROPOSAL_APPROVED);
   }
 
   // Update an existing proposal
@@ -42,11 +38,11 @@ export class ProposalService {
     id: number,
     proposal: Partial<Proposal>
   ): Observable<Proposal> {
-    return this.http.put<Proposal>(`${this.apiUrl}/${id}`, proposal);
+    return of(MOCK_PROPOSAL_APPROVED);
   }
 
   // Delete a proposal by ID
   deleteProposal(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return of();
   }
 }

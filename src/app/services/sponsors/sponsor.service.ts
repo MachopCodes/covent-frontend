@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Sponsor } from 'src/app/models/sponsor.model';
 import { environment } from 'src/environments/environment.prod'; // Update as needed
-import { MOCK_SPONSORS } from 'src/testing/sponsors_mock_data';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
 
 @Injectable({
   providedIn: 'root',

@@ -1,42 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { EventObject } from '../../models/event.model';
 import { environment } from 'src/environments/environment.prod';
 import { MOCK_EVENT_DATA } from 'src/testing/events/events_mock_data';
+import { EventObject } from 'src/app/models/event.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class EventService {
-  private apiUrl = environment.apiUrl; // Replace with your .env approach if needed
-
-  constructor(private http: HttpClient) {}
+export class EventServiceStub {
+  constructor() {}
 
   // Get all events
   index(): Observable<EventObject[]> {
     return of(MOCK_EVENT_DATA); // MOCK
-    return this.http.get<EventObject[]>(`${this.apiUrl}/events`);
   }
 
   // Get a specific event by ID
   get(id: number): Observable<EventObject> {
     return of(MOCK_EVENT_DATA[0]); // MOCK
-    return this.http.get<EventObject>(`${this.apiUrl}/events/${id}`);
   }
 
   // Create a new event
   create(event: EventObject): Observable<EventObject> {
-    return this.http.post<EventObject>(`${this.apiUrl}/events`, event);
+    return of(MOCK_EVENT_DATA[0]); // MOCK
   }
 
   // Edit an existing event
   edit(id: number, event: Partial<EventObject>): Observable<EventObject> {
-    return this.http.put<EventObject>(`${this.apiUrl}/events/${id}`, event);
+    return of(MOCK_EVENT_DATA[0]); // MOCK
   }
 
   // Delete an event by ID
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/events/${id}`);
+    return of(); // MOCK
   }
 }
