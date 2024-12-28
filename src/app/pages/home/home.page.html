@@ -1,12 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Covent Front Page</ion-title>
-    <app-login slot="end"></app-login>
-  </ion-toolbar>
-</ion-header>
+<app-header title="home"></app-header>
 <ion-content [fullscreen]="true">
   <div class="container">
-    <ion-button [routerLink]="['/sponsors']">Go to Sponsors</ion-button>
-    <ion-button [routerLink]="['/events']">Go to Events</ion-button>
+    <ion-button [routerLink]="['/sponsors']">Sponsors</ion-button>
+    <ion-button [routerLink]="['/events']">Events</ion-button>
+    <ion-button [routerLink]="['/proposals']">Proposals</ion-button>
   </div>
 </ion-content>

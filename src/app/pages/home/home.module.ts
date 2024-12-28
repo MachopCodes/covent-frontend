@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { LoginComponent } from '../../shared/login/login.component';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { LoginComponent } from '../../shared/login/login.component';
     IonicModule,
     HomePageRoutingModule,
     LoginComponent,
+    HeaderComponent,
   ],
   declarations: [HomePage],
 })

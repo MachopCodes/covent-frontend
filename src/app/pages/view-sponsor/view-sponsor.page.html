@@ -1,21 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/sponsors"></ion-back-button>
-    </ion-buttons>
-    <ion-title>View Sponsor</ion-title>
-  </ion-toolbar>
-</ion-header>
-
+<app-header title="View Sponsor" back="/sponsors"></app-header>
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
       <ion-card-title [routerLink]="[sponsor.id]">
         {{ sponsor.name }}
       </ion-card-title>
-      <ion-card-subtitle
-        >{{sponsor.job_title}}, {{sponsor.company_name}}</ion-card-subtitle
-      >
+      <ion-card-subtitle>
+        {{ sponsor.job_title }}, {{ sponsor.company_name }}
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <p><b>Budget:</b> {{ sponsor.budget | currency: 'USD'}}</p>
@@ -26,13 +18,14 @@
           {{ topic }}<span *ngIf="i < sponsor.topics.length - 1">,&nbsp;</span>
         </span>
       </p>
-
       <p>
         <b>Event Attendee Personas:</b>
         <span
           *ngFor="let persona of sponsor.event_attendee_personas; let i = index"
         >
-          {{ persona}}<span *ngIf="i < sponsor.topics.length - 1">,&nbsp;</span>
+          {{ persona }}<span *ngIf="i < sponsor.topics.length - 1"
+            >,&nbsp;</span
+          >
         </span>
       </p>
       <p>
@@ -47,4 +40,8 @@
       </p>
     </ion-card-content>
   </ion-card>
+
+  <ion-button expand="block" (click)="createProposal()"
+    >Create Proposal</ion-button
+  >
 </ion-content>

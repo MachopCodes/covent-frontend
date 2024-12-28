@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { SponsorsPageRoutingModule } from './sponsors-routing.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SponsorsPage } from './sponsors.page';
+import { HeaderComponent } from '../../shared/header/header.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { SponsorsPage } from './sponsors.page';
     IonicModule,
     SponsorsPageRoutingModule,
     ScrollingModule,
+    HeaderComponent,
   ],
   declarations: [SponsorsPage],
 })
