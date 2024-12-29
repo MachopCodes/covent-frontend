@@ -9,8 +9,7 @@ describe('EditEventModalComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditEventModalComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [EditEventModalComponent, IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditEventModalComponent);

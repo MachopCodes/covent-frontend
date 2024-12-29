@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Proposal, ProposalCreateRequest } from 'src/app/models/proposal.model';
+import { ProposalCreateRequest } from 'src/app/models/proposal.model';
 import { ProposalService } from 'src/app/services/proposals/proposal.service';
 import { Sponsor } from 'src/app/models/sponsor.model';
 import { EventService } from 'src/app/services/events/event.service';

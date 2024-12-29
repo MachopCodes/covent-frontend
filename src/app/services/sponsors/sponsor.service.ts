@@ -36,7 +36,7 @@ export class SponsorService {
   }
 
   // Delete a sponsor by ID
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/sponsors/${id}`);
+  delete(id: number): Observable<Sponsor> {
+    return this.http.delete<Sponsor>(`${this.apiUrl}/sponsors/${id}`);
   }
 }

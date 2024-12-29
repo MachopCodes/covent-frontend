@@ -9,8 +9,6 @@ import { EventObject } from 'src/app/models/event.model';
   providedIn: 'root',
 })
 export class EventServiceStub {
-  constructor() {}
-
   // Get all events
   index(): Observable<EventObject[]> {
     return of(MOCK_EVENT_DATA); // MOCK
