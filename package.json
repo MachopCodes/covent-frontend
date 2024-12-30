@@ -7,10 +7,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "source": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "coverage": "ng test --code-coverage",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "serve": "ng serve --configuration=production"
   },
   "private": true,
   "dependencies": {
