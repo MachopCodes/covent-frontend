@@ -1,0 +1,7 @@
+ion-item {
+  cursor: pointer; /* Changes cursor to a pointer */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+  &:hover {
+    filter: brightness(90%); /* Slightly darken the background */
+  }
+}

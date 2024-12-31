@@ -2,7 +2,7 @@
 <ion-content [fullscreen]="true">
   <h3>My Proposals</h3>
   <ion-list *ngFor="let proposal of proposals">
-    <ion-item>
+    <ion-item (click)="openProposal(proposal)">
       <ion-label
         >{{ proposal.event_snapshot.name}} x {{
         proposal.sponsor_snapshot.company_name}}</ion-label

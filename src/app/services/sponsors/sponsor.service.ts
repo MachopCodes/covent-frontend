@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Sponsor } from 'src/app/models/sponsor.model';
 import { environment } from 'src/environments/environment';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class SponsorService {
 
   // Get a specific sponsor by ID
   get(id: number): Observable<Sponsor> {
+    return of(MOCK_SPONSORS[0]);
     return this.http.get<Sponsor>(`${this.apiUrl}${id}`);
   }
 

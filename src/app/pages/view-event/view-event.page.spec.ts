@@ -8,6 +8,8 @@ import { EditEventModalComponent } from 'src/app/shared/edit-event-modal/edit-ev
 import { MOCK_EVENT } from 'src/testing/events/events_mock_data';
 import { EventServiceStub } from 'src/testing/events/event_service_stub';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('ViewEventPage', () => {
   let component: ViewEventPage;
@@ -27,6 +29,8 @@ describe('ViewEventPage', () => {
         },
         { provide: ModalController, useValue: mockModalController },
         { provide: EventService, useClass: EventServiceStub },
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
     }).compileComponents();
   });

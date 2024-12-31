@@ -7,7 +7,7 @@ export const MOCK_PROPOSAL_APPROVED: Proposal = {
   owner_id: 1,
   notes: 'Test',
   contact_info: '123-232-2343',
-  status: 'Approved',
+  status: 'APPROVED',
   event_snapshot: { name: 'Event Name', date: '2024-01-01' },
   sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
 };
@@ -19,7 +19,7 @@ export const MOCK_PROPOSAL_PENDING: Proposal = {
   owner_id: 1,
   notes: 'Test',
   contact_info: '123-232-2343',
-  status: 'Pending',
+  status: 'PENDING',
   event_snapshot: { name: 'Event Name', date: '2024-01-01' },
   sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
 };
@@ -31,7 +31,7 @@ export const MOCK_PROPOSAL_REJECTED: Proposal = {
   owner_id: 1,
   notes: 'Test',
   contact_info: '123-232-2343',
-  status: 'Rejected',
+  status: 'REJECTED',
   event_snapshot: { name: 'Event Name', date: '2024-01-01' },
   sponsor_snapshot: { name: 'Joe Tom', company_name: 'Smathers n Branson' },
 };
@@ -42,7 +42,7 @@ export const MOCK_PROPOSAL_CREATE_REQUEST: ProposalCreateRequest = {
   owner_id: 1,
   notes: 'test',
   contact_info: '',
-  status: 'Approved',
+  status: 'APPROVED',
   event_snapshot: {
     name: 'test',
     date: 'test',

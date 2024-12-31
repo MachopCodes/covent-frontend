@@ -7,12 +7,12 @@ import { SponsorService } from './sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor.model';
 import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
 import { provideHttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 describe('SponsorService', () => {
   let service: SponsorService;
   let httpMock: HttpTestingController;
-
-  const mockApiUrl = 'https://api.example.com';
+  const apiUrl = `${environment.apiUrl}`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,7 +21,7 @@ describe('SponsorService', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         SponsorService,
-        { provide: 'apiUrl', useValue: mockApiUrl }, // Mock API URL
+        { provide: 'apiUrl', useValue: apiUrl }, // Mock API URL
       ],
     });
 
@@ -42,7 +42,7 @@ describe('SponsorService', () => {
       expect(sponsors).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${mockApiUrl}/sponsors`);
+    const req = httpMock.expectOne(`${apiUrl}/sponsors`);
     expect(req.request.method).toBe('GET');
     req.flush(MOCK_SPONSORS);
   });
@@ -54,7 +54,7 @@ describe('SponsorService', () => {
       expect(sponsor).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${mockApiUrl}/sponsors/${mockSponsor.id}`);
+    const req = httpMock.expectOne(`${apiUrl}/sponsors/${mockSponsor.id}`);
     expect(req.request.method).toBe('GET');
     req.flush(mockSponsor); // Respond with mock data
   });
@@ -76,7 +76,7 @@ describe('SponsorService', () => {
       expect(sponsor).toEqual(newSponsor);
     });
 
-    const req = httpMock.expectOne(`${mockApiUrl}/sponsors`);
+    const req = httpMock.expectOne(`${apiUrl}/sponsors`);
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(newSponsor);
     req.flush(newSponsor); // Respond with mock data
@@ -91,7 +91,7 @@ describe('SponsorService', () => {
       expect(sponsor.budget).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${mockApiUrl}/sponsors/1`);
+    const req = httpMock.expectOne(`${apiUrl}/sponsors/1`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(updatedSponsor);
     req.flush({ ...MOCK_SPONSORS[0], ...updatedSponsor }); // Respond with updated mock data
@@ -104,7 +104,7 @@ describe('SponsorService', () => {
       expect(response).toBeDefined(); // Delete request returns void
     });
 
-    const req = httpMock.expectOne(`${mockApiUrl}/sponsors/${sponsorId}`);
+    const req = httpMock.expectOne(`${apiUrl}/sponsors/${sponsorId}`);
     expect(req.request.method).toBe('DELETE');
     req.flush(MOCK_SPONSORS[0]); // Respond with no content
   });

@@ -6,6 +6,8 @@ import { ProposalsPage } from './proposals.page';
 import { By } from '@angular/platform-browser';
 import { Proposal } from 'src/app/models/proposal.model';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('ProposalsPage', () => {
   let component: ProposalsPage;
@@ -22,6 +24,8 @@ describe('ProposalsPage', () => {
           provide: ActivatedRoute,
           useValue: { data: of({ proposals: mockProposals }) },
         },
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
     }).compileComponents();
 

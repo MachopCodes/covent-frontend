@@ -4,9 +4,10 @@ import { IonicModule, ModalController } from '@ionic/angular';
 import { ActivatedRoute, provideRouter, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { ViewSponsorPage } from './view-sponsor.page';
-import { Sponsor } from 'src/app/models/sponsor.model';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('ViewSponsorPage', () => {
   let component: ViewSponsorPage;
@@ -26,6 +27,8 @@ describe('ViewSponsorPage', () => {
           useValue: { data: of({ sponsor: MOCK_SPONSORS[0] }) },
         },
         { provide: ModalController, useValue: mockModalController },
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ],
     }).compileComponents();
 

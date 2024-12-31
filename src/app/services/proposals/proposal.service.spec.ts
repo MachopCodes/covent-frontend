@@ -98,16 +98,14 @@ describe('ProposalService', () => {
 
   describe('#updateProposal', () => {
     xit('should update an existing proposal', () => {
-      service
-        .updateProposal(1, MOCK_PROPOSAL_CREATE_REQUEST)
-        .subscribe((proposal) => {
-          expect(proposal).toBeDefined();
-        });
+      service.updateProposal(MOCK_PROPOSAL_PENDING).subscribe((proposal) => {
+        expect(proposal).toBeDefined();
+      });
 
       const req = httpMock.expectOne(`${apiUrl}/1`);
       expect(req.request.method).toBe('PUT');
       expect(req.request.body).toBeDefined();
-      req.flush(MOCK_PROPOSAL_CREATE_REQUEST);
+      req.flush(MOCK_PROPOSAL_PENDING);
     });
   });
 

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title
+      >Proposal Details<ion-badge
+        [color]="
+          proposal.status === 'APPROVED'
+            ? 'success'
+            : proposal.status === 'PENDING'
+            ? 'warning'
+            : 'danger'
+        "
+        >{{ proposal.status }}</ion-badge
+      >
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Proposal Details -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Proposal Information</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        <strong>Status:</strong>
+        <ion-select
+          [(ngModel)]="proposal.status"
+          (ionChange)="saveStatus()"
+          interface="popover"
+        >
+          <ion-select-option value="APPROVED">APPROVED</ion-select-option>
+          <ion-select-option value="PENDING">PENDING</ion-select-option>
+          <ion-select-option value="REJECTED">REJECTED</ion-select-option>
+        </ion-select>
+      </p>
+      <p><strong>Description:</strong> {{ proposal.notes }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Event Details -->
+  <ion-card *ngIf="event">
+    <ion-card-header>
+      <ion-card-title>Event Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Name:</strong> {{ event.name }}</p>
+      <p><strong>Overview:</strong> {{ event.event_overview }}</p>
+      <p>
+        <strong>Target Attendees:</strong>
+        {{ event.target_attendees.join(", ") }}
+      </p>
+      <p><strong>Sponsorship Value:</strong> {{ event.sponsorship_value }}</p>
+      <p><strong>Contact Info:</strong> {{ event.contact_info }}</p>
+      <p><strong>Date:</strong> {{ event.date || "N/A" }}</p>
+      <p><strong>Location:</strong> {{ event.location || "N/A" }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sponsor Details -->
+  <ion-card *ngIf="sponsor">
+    <ion-card-header>
+      <ion-card-title>Sponsor Details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Name:</strong> {{ sponsor.name }}</p>
+      <p><strong>Job Title:</strong> {{ sponsor.job_title }}</p>
+      <p><strong>Company:</strong> {{ sponsor.company_name }}</p>
+      <p><strong>Budget:</strong> {{ sponsor.budget | currency }}</p>
+      <p><strong>Industry:</strong> {{ sponsor.industry }}</p>
+      <p><strong>Topics:</strong> {{ sponsor.topics.join(", ") }}</p>
+      <p>
+        <strong>Event Attendee Personas:</strong>
+        {{ sponsor.event_attendee_personas.join(", ") }}
+      </p>
+      <p>
+        <strong>Key Objectives:</strong>
+        {{ sponsor.key_objectives_for_event_sponsorship.join(", ") }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
