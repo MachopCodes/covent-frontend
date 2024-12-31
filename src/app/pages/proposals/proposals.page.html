@@ -1,7 +1,7 @@
 <app-header title="Proposals" back="/"></app-header>
 <ion-content [fullscreen]="true">
   <h3>My Proposals</h3>
-  <ion-list *ngFor="let proposal of proposals">
+  <ion-list *ngFor="let proposal of myProposals">
     <ion-item (click)="openProposal(proposal)">
       <ion-label
         >{{ proposal.event_snapshot.name}} x {{
@@ -14,4 +14,16 @@
     </ion-item>
   </ion-list>
   <h3>Proposals for Me</h3>
+  <ion-list *ngFor="let proposal of proposalsForMe">
+    <ion-item (click)="openProposal(proposal)">
+      <ion-label
+        >{{ proposal.event_snapshot.name}} x {{
+        proposal.sponsor_snapshot.company_name}}</ion-label
+      >
+      <ion-badge
+        [color]="proposal.status === 'APPROVED'? 'success' : proposal.status === 'PENDING' ? 'warning' : 'danger'"
+        >{{ proposal.status }}</ion-badge
+      >
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -20,7 +20,6 @@ export class SponsorService {
 
   // Get a specific sponsor by ID
   get(id: number): Observable<Sponsor> {
-    return of(MOCK_SPONSORS[0]);
     return this.http.get<Sponsor>(`${this.apiUrl}${id}`);
   }
 

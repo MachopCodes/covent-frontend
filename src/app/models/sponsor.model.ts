@@ -8,4 +8,5 @@ export interface Sponsor {
   topics: string[];
   event_attendee_personas: string[];
   key_objectives_for_event_sponsorship: string[];
+  user_id: number
 }

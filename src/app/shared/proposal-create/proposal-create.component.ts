@@ -50,7 +50,7 @@ export class CreateProposalDialogComponent implements OnInit {
 
   private getEvents() {
     this.loaderService.show()
-    this.eventService.index().subscribe({
+    this.eventService.getMyEvents().subscribe({
       next: (events) => (this.events = events),
       error: (error) => this.errorService.handleError(error),
       complete: () => this.loaderService.hide(),
@@ -62,7 +62,6 @@ export class CreateProposalDialogComponent implements OnInit {
     this.proposalForm = this.formBuilder.group({
       event: [null, [Validators.required]],
       notes: ['', [Validators.required]],
-      contactInfo: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -81,7 +80,7 @@ export class CreateProposalDialogComponent implements OnInit {
         sponsor_id: this.sponsor.id,
         owner_id: 1, // Replace with logged-in user's ID
         notes: formValues.notes,
-        contact_info: formValues.contactInfo,
+        contact_info: formValues.event.contact_info,
         status: 'PENDING',
         event_snapshot: {
           name: formValues.event.name,

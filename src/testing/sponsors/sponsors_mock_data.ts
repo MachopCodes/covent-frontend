@@ -14,6 +14,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Brand awareness',
       'Networking with industry leaders',
     ],
+    user_id: 2
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Promote sustainable solutions',
       'Attract eco-conscious partners',
     ],
+    user_id: 2
   },
   {
     id: 3,
@@ -48,6 +50,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Increase product visibility',
       'Engage with potential distributors',
     ],
+    user_id: 2
   },
   {
     id: 4,
@@ -65,6 +68,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Raise awareness for digital health innovations',
       'Build partnerships with healthcare professionals',
     ],
+    user_id: 2
   },
   {
     id: 5,
@@ -79,6 +83,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Lead generation',
       'Position as industry leader',
     ],
+    user_id: 2
   },
   {
     id: 6,
@@ -93,6 +98,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Showcase research advancements',
       'Connect with other biotech companies',
     ],
+    user_id: 2
   },
   {
     id: 7,
@@ -110,6 +116,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Build brand recognition',
       'Educate attendees on clean water solutions',
     ],
+    user_id: 2
   },
   {
     id: 8,
@@ -127,6 +134,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Position as a leader in EV',
       'Explore potential collaborations',
     ],
+    user_id: 2
   },
   {
     id: 9,
@@ -141,6 +149,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Networking with potential clients',
       'Demonstrate design expertise',
     ],
+    user_id: 2
   },
   {
     id: 10,
@@ -155,6 +164,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Promote new tech tools for farming',
       'Engage with agricultural stakeholders',
     ],
+    user_id: 2
   },
   {
     id: 11,
@@ -169,6 +179,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Generate leads',
       'Showcase advanced security solutions',
     ],
+    user_id: 2
   },
   {
     id: 12,
@@ -183,6 +194,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Brand visibility',
       'Engage with content creators',
     ],
+    user_id: 2
   },
   {
     id: 13,
@@ -197,6 +209,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Promote cutting-edge technologies',
       'Connect with researchers',
     ],
+    user_id: 2
   },
   {
     id: 14,
@@ -214,6 +227,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Brand positioning',
       'Connect with affluent consumers',
     ],
+    user_id: 2
   },
   {
     id: 15,
@@ -231,6 +245,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Position as an industry leader',
       'Build relationships with aerospace professionals',
     ],
+    user_id: 2
   },
   {
     id: 16,
@@ -245,6 +260,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Promote cloud solutions',
       'Engage with potential clients',
     ],
+    user_id: 2
   },
   {
     id: 17,
@@ -262,6 +278,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Increase brand awareness',
       'Network with environmental advocates',
     ],
+    user_id: 2
   },
   {
     id: 18,
@@ -276,6 +293,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Showcase products',
       'Build partnerships with retailers',
     ],
+    user_id: 2
   },
   {
     id: 19,
@@ -293,6 +311,7 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Generate awareness for wearable devices',
       'Meet healthcare stakeholders',
     ],
+    user_id: 2
   },
   {
     id: 20,
@@ -310,5 +329,6 @@ export const MOCK_SPONSORS: Sponsor[] = [
       'Networking with logistics experts',
       'Increase global brand recognition',
     ],
+    user_id: 2
   },
 ];

@@ -1,62 +1,59 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismiss()">Close</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">Username</ion-label>
-        <ion-input formControlName="name" type="text"></ion-input>
-      </ion-item>
-      <div
-        *ngIf="
-          loginForm.get('name')?.invalid &&
-          loginForm.get('name')?.touched
-        "
-        class="error"
-      >
-        <p *ngIf="loginForm.get('name')?.hasError('required')">
-          Username is required.
-        </p>
-        <p *ngIf="loginForm.get('name')?.hasError('minlength')">
-          Username must be at least 3 characters.
-        </p>
-      </div>
-
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input formControlName="password" type="password"></ion-input>
-      </ion-item>
-      <div
-        *ngIf="
-          loginForm.get('password')?.invalid &&
-          loginForm.get('password')?.touched
-        "
-        class="error"
-      >
-        <p *ngIf="loginForm.get('password')?.hasError('required')">
-          Password is required.
-        </p>
-        <p *ngIf="loginForm.get('password')?.hasError('minlength')">
-          Password must be at least 6 characters.
-        </p>
-      </div>
-    </ion-list>
-
-    <ion-button expand="block" type="submit" [disabled]="loginForm.invalid"
-      >Sign In</ion-button
-    >
-  </form>
-  <div class="a-tags">
-    <a>Forgot Password?</a>
-    <a [routerLink]="['/sign-up']" (click)="closeModal()"
-      >No Account? Sign Up</a
-    >
+  <div class="image">
+    <ion-img src="assets/images/logo.webp" alt="Logo" class="header-logo" />
   </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-list>
+        <ion-input
+          formControlName="name"
+          type="text"
+          label="Username"
+        ></ion-input>
+
+        <div
+          *ngIf="
+            loginForm.get('name')?.invalid && loginForm.get('name')?.touched
+          "
+          class="error"
+        >
+          <p *ngIf="loginForm.get('name')?.hasError('required')">
+            Username is required.
+          </p>
+          <p *ngIf="loginForm.get('name')?.hasError('minlength')">
+            Username must be at least 3 characters.
+          </p>
+        </div>
+
+        <ion-input
+          formControlName="password"
+          type="password"
+          label="password"
+        ></ion-input>
+
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="error"
+        >
+          <p *ngIf="loginForm.get('password')?.hasError('required')">
+            Password is required.
+          </p>
+          <p *ngIf="loginForm.get('password')?.hasError('minlength')">
+            Password must be at least 6 characters.
+          </p>
+        </div>
+      </ion-list>
+
+      <ion-button expand="block" type="submit" [disabled]="loginForm.invalid"
+        >Sign In</ion-button
+      >
+    </form>
+    <div class="a-tags">
+      <a>Forgot Password?</a>
+      <a (click)="closeModal()"
+        >No Account? Sign Up</a
+      >
+    </div>
 </ion-content>
