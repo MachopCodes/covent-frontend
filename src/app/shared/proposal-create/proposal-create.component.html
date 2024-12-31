@@ -11,25 +11,27 @@
   <form [formGroup]="proposalForm" (ngSubmit)="submitProposal()">
     <ion-list>
       <ion-item>
-        <ion-label position="floating">Event</ion-label>
-        <ion-select formControlName="event_id" placeholder="Select an Event">
-          <ion-select-option *ngFor="let event of events" [value]="event.id">
+        <ion-select
+          formControlName="event"
+          placeholder="Select an Event"
+          label="Event"
+        >
+          <ion-select-option *ngFor="let event of events" [value]="event">
             {{ event.name }}
           </ion-select-option>
         </ion-select>
       </ion-item>
       <div
         *ngIf="
-          proposalForm.get('event_id')?.invalid &&
-          proposalForm.get('event_id')?.touched
+          proposalForm.get('event')?.invalid &&
+          proposalForm.get('event')?.touched
         "
       >
         <p class="error">Event name is required</p>
       </div>
 
       <ion-item>
-        <ion-label position="floating">Notes</ion-label>
-        <ion-textarea formControlName="notes"></ion-textarea>
+        <ion-textarea formControlName="notes" label="Notes"></ion-textarea>
       </ion-item>
       <div
         *ngIf="
@@ -41,8 +43,11 @@
       </div>
 
       <ion-item>
-        <ion-label position="floating">Contact Info</ion-label>
-        <ion-input type="email" formControlName="contactInfo"></ion-input>
+        <ion-input
+          type="email"
+          formControlName="contactInfo"
+          label="Contact Info"
+        ></ion-input>
       </ion-item>
       <div
         *ngIf="

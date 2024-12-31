@@ -1,1 +1,3 @@
-<ion-button (click)="openLoginModal()">Login</ion-button>
+<ion-button (click)="isLoggedIn ? logout() : openLoginModal()">{{
+  isLoggedIn ? "Log Out" : "Log In"
+}}</ion-button>

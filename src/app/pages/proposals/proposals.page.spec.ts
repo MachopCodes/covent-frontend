@@ -56,9 +56,9 @@ describe('ProposalsPage', () => {
       expect(badge.textContent.trim()).toBe(mockProposals[index].status);
 
       const expectedColor =
-        mockProposals[index].status === 'Approved'
+        mockProposals[index].status === 'APPROVED'
           ? 'success'
-          : mockProposals[index].status === 'Pending'
+          : mockProposals[index].status === 'PENDING'
           ? 'warning'
           : 'danger';
       expect(badge.getAttribute('color')).toBe(expectedColor);

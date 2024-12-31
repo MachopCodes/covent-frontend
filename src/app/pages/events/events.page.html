@@ -1,6 +1,6 @@
 <app-header title="Events" back="/"></app-header>
 <ion-content [fullscreen]="true">
-  <ion-button>Create Event</ion-button>
+  <ion-button (click)="openEventModal()">Create Event</ion-button>
   <div *ngFor="let event of eventData">
     <ion-card class="clickable-card" [routerLink]="[event.id]">
       <ion-card-header>

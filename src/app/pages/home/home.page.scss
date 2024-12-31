@@ -1,11 +1,30 @@
 .container {
-  margin: 20px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Ensure even spacing between items */
+  gap: 1rem; /* Add spacing between rows and columns */
+  padding: 1rem; /* Optional: add padding around the container */
+}
+
+.card {
+  flex: 1 1 calc(33.33% - 1rem); /* Each card takes 1/3 of the width minus spacing */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for cards */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Optional: rounded corners */
+  text-align: center; /* Center text in each card */
+  background-color: #fff; /* Optional: white background for cards */
+}
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 calc(50% - 1rem); /* Each card takes 1/2 of the width on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex: 1 1 100%; /* Each card takes the full width on small screens */
   }
 }

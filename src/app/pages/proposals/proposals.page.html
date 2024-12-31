@@ -8,7 +8,7 @@
         proposal.sponsor_snapshot.company_name}}</ion-label
       >
       <ion-badge
-        [color]="proposal.status === 'Approved'? 'success' : proposal.status === 'Pending' ? 'warning' : 'danger'"
+        [color]="proposal.status === 'APPROVED'? 'success' : proposal.status === 'PENDING' ? 'warning' : 'danger'"
         >{{ proposal.status }}</ion-badge
       >
     </ion-item>

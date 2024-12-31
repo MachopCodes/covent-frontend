@@ -51,7 +51,7 @@ export class CreateProposalDialogComponent implements OnInit {
   // Initialize the form with default values and validators
   private initializeForm(): void {
     this.proposalForm = this.formBuilder.group({
-      event_id: ['', [Validators.required]],
+      event: [null, [Validators.required]],
       notes: ['', [Validators.required]],
       contactInfo: ['', [Validators.required, Validators.email]],
     });
@@ -67,16 +67,18 @@ export class CreateProposalDialogComponent implements OnInit {
     if (this.proposalForm.valid) {
       const formValues = this.proposalForm.value;
 
+      console.log('event', formValues.event)
+
       const proposal: ProposalCreateRequest = {
-        event_id: formValues.event_id,
+        event_id: formValues.event.id,
         sponsor_id: this.sponsor.id,
         owner_id: 1, // Replace with logged-in user's ID
         notes: formValues.notes,
         contact_info: formValues.contactInfo,
-        status: 'Pending',
+        status: 'PENDING',
         event_snapshot: {
-          name: '',
-          date: '',
+          name: formValues.event.name,
+          date: formValues.event.date ?? null,
         },
         sponsor_snapshot: {
           name: this.sponsor.name,

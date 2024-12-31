@@ -21,9 +21,10 @@ export class ViewSponsorPage implements OnInit {
     this.route.data.subscribe((data) => (this.sponsor = data['sponsor']));
   }
 
-  async createProposal() {
+  async createProposal(sponsor: Sponsor) {
     const modal = await this.modalController.create({
       component: CreateProposalDialogComponent,
+      componentProps: { sponsor },
     });
     return await modal.present();
   }

@@ -11,32 +11,47 @@
   <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item>
-        <ion-label position="floating">Event Name</ion-label>
-        <ion-input formControlName="name"></ion-input>
+        <ion-input formControlName="name" label="Event Name"></ion-input>
+      </ion-item>
+      <ion-datetime formControlName="date" presentation="date"></ion-datetime>
+      <ion-item>
+        <ion-input formControlName="location" label="Location"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-select
+          label="Target Attendees"
+          [multiple]="true"
+          formControlName="target_attendees"
+          placeholder="Select Attendees"
+        >
+          <ion-select-option
+            *ngFor="let option of attendeeOptions"
+            [value]="option"
+          >
+            {{ option }}
+          </ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Date</ion-label>
-        <ion-datetime formControlName="date" presentation="date"></ion-datetime>
+        <ion-textarea
+          formControlName="event_overview"
+          label="Overview"
+        ></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Location</ion-label>
-        <ion-input formControlName="location"></ion-input>
+        <ion-input
+          formControlName="sponsorship_value"
+          type="text"
+          label="Sponsorship Value"
+        ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Target Attendees</ion-label>
-        <ion-input formControlName="target_attendees"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Overview</ion-label>
-        <ion-textarea formControlName="event_overview"></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Sponsorship Value</ion-label>
-        <ion-input formControlName="sponsorship_value" type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Contact Info</ion-label>
-        <ion-input formControlName="contact_info" type="email"></ion-input>
+        <ion-input
+          formControlName="contact_info"
+          type="email"
+          label="Contact Info"
+        ></ion-input>
       </ion-item>
     </ion-list>
 

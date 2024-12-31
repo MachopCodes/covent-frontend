@@ -26,6 +26,29 @@ import { CommonModule } from '@angular/common';
 export class EditEventModalComponent {
   @Input() event?: EventObject; // Optional event object for editing
   eventForm!: FormGroup;
+  attendeeOptions = [
+    "Software Engineers",
+    "Data Scientists",
+    "Product Managers",
+    "UX/UI Designers",
+    "DevOps Engineers",
+    "Startup Founders",
+    "Investors",
+    "Tech Enthusiasts",
+    "QA Testers",
+    "Cloud Architects",
+    "Blockchain Developers",
+    "AI/ML Researchers",
+    "Cybersecurity Experts",
+    "Game Developers",
+    "IoT Specialists",
+    "Mobile App Developers",
+    "AR/VR Developers",
+    "Open Source Contributors",
+    "Tech Recruiters",
+    "Academics and Researchers"
+  ];
+  newAttendee: string = '';
 
   constructor(
     private modalController: ModalController,

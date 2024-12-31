@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -27,11 +28,12 @@ export class LoginModalComponent {
 
   constructor(
     private modalController: ModalController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required, Validators.minLength(1)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -41,8 +43,10 @@ export class LoginModalComponent {
 
   login() {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      console.log('Logging in with:', { username, password });
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response) => console.log('response', response),
+        complete: () => null
+      })
       this.dismiss();
     } else {
       console.log('Form is invalid');
