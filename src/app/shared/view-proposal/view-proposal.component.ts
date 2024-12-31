@@ -34,6 +34,11 @@ export class ViewProposalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.fetchData()
+  }
+
+  private fetchData() {
+    this.loaderService.show()
     forkJoin({
       sponsor: this.sponsorService.get(this.proposal.sponsor_id),
       event: this.eventService.get(this.proposal.event_id),
@@ -42,7 +47,8 @@ export class ViewProposalComponent implements OnInit {
         this.sponsor = sponsor;
         this.event = event;
       },
-      error: (error) => console.error('Error fetching proposal:', error),
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide()
     });
   }
 

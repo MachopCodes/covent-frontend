@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { EventObject } from 'src/app/models/event.model';
+import { ErrorService } from 'src/app/services/error/error.service';
 import { EventService } from 'src/app/services/events/event.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { EditEventModalComponent } from 'src/app/shared/edit-event-modal/edit-event-modal.component';
 
 @Component({
@@ -17,7 +19,9 @@ export class ViewEventPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private loaderService: LoaderService,
+    private errorService: ErrorService
   ) {}
 
   ngOnInit() {
@@ -27,18 +31,22 @@ export class ViewEventPage implements OnInit {
   async openEventModal(event: EventObject) {
     const modal = await this.modalController.create({
       component: EditEventModalComponent,
-      componentProps: { event }, // Pass event if editing; pass nothing if creating
+      componentProps: { event }, 
     });
 
-    modal.onDidDismiss().then((result) => {
-      result.data &&
-        this.eventService.edit(event.id, result.data).subscribe({
-          next: (updatedEvent) => (this.event = updatedEvent),
-          error: (error) => console.error('Error updating event:', error),
-          complete: () => console.log('Event updated successfully!'),
-        });
-    });
+    modal
+      .onDidDismiss()
+      .then((result) => result.data && this.editEvent(result.data));
 
     return await modal.present();
+  }
+
+  private editEvent(event: EventObject) {
+    this.loaderService.show();
+    this.eventService.edit(event.id, event).subscribe({
+      next: (updatedEvent) => (this.event = updatedEvent),
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide(),
+    });
   }
 }
