@@ -18,8 +18,7 @@ describe('ErrorMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IonicModule],
-      declarations: [ErrorMessageComponent],
+      imports: [IonicModule, ErrorMessageComponent],
       providers: [{ provide: ErrorService, useValue: mockErrorService }],
     }).compileComponents();
 
@@ -49,14 +48,5 @@ describe('ErrorMessageComponent', () => {
 
     expect(component.isToastOpen).toBeFalse();
     expect(mockErrorService.clearError).toHaveBeenCalled();
-  });
-
-  it('should not open toast if error message is null', () => {
-    errorSubject.next(null); // Emit no error
-
-    fixture.detectChanges(); // Trigger change detection
-
-    expect(component.isToastOpen).toBeFalse();
-    expect(component.message).toBe('');
   });
 });

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { LoaderService } from '../loader/loader.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Injectable({
   providedIn: 'root',

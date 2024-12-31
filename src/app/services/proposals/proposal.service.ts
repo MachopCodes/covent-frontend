@@ -19,18 +19,11 @@ export class ProposalService {
 
   // Get all proposals that I'm the event owner of or the sponsor owner of
   getProposals(): Observable<Proposal[]> {
-    return of([
-      MOCK_PROPOSAL_APPROVED,
-      MOCK_PROPOSAL_APPROVED,
-      MOCK_PROPOSAL_PENDING,
-      MOCK_PROPOSAL_REJECTED,
-    ]);
     return this.http.get<Proposal[]>(this.apiUrl);
   }
 
   // Get a specific proposal by ID
   getProposal(id: number): Observable<Proposal> {
-    return of(MOCK_PROPOSAL_APPROVED);
     return this.http.get<Proposal>(`${this.apiUrl}/${id}`);
   }
 

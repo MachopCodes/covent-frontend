@@ -6,6 +6,8 @@ import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
 import { MOCK_EVENT_DATA } from 'src/testing/events/events_mock_data';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('EventsPage', () => {
   let component: EventsPage;
@@ -17,6 +19,8 @@ describe('EventsPage', () => {
       imports: [IonicModule.forRoot(), HeaderComponent, RouterModule],
       providers: [
         provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting(),
         {
           provide: ActivatedRoute,
           useValue: { data: of({ events: MOCK_EVENT_DATA }) },

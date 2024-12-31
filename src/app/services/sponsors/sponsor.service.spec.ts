@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 describe('SponsorService', () => {
   let service: SponsorService;
   let httpMock: HttpTestingController;
-  const apiUrl = `${environment.apiUrl}`;
+  const apiUrl = `${environment.apiUrl}/sponsors/`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,7 +42,7 @@ describe('SponsorService', () => {
       expect(sponsors).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/sponsors`);
+    const req = httpMock.expectOne(`${apiUrl}`);
     expect(req.request.method).toBe('GET');
     req.flush(MOCK_SPONSORS);
   });
@@ -54,7 +54,7 @@ describe('SponsorService', () => {
       expect(sponsor).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/sponsors/${mockSponsor.id}`);
+    const req = httpMock.expectOne(`${apiUrl}/${mockSponsor.id}`);
     expect(req.request.method).toBe('GET');
     req.flush(mockSponsor); // Respond with mock data
   });
@@ -76,7 +76,7 @@ describe('SponsorService', () => {
       expect(sponsor).toEqual(newSponsor);
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/sponsors`);
+    const req = httpMock.expectOne(`${apiUrl}`);
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(newSponsor);
     req.flush(newSponsor); // Respond with mock data
@@ -91,7 +91,7 @@ describe('SponsorService', () => {
       expect(sponsor.budget).toBeDefined();
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/sponsors/1`);
+    const req = httpMock.expectOne(`${apiUrl}1`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(updatedSponsor);
     req.flush({ ...MOCK_SPONSORS[0], ...updatedSponsor }); // Respond with updated mock data
@@ -104,7 +104,7 @@ describe('SponsorService', () => {
       expect(response).toBeDefined(); // Delete request returns void
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/sponsors/${sponsorId}`);
+    const req = httpMock.expectOne(`${apiUrl}${sponsorId}`);
     expect(req.request.method).toBe('DELETE');
     req.flush(MOCK_SPONSORS[0]); // Respond with no content
   });

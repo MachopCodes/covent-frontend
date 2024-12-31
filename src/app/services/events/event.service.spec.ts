@@ -5,12 +5,9 @@ import {
 } from '@angular/common/http/testing';
 import { EventService } from './event.service';
 import { EventObject } from '../../models/event.model';
-import {
-  MOCK_EVENT,
-  MOCK_EVENT_DATA,
-} from 'src/testing/events/events_mock_data';
+import { MOCK_EVENT } from 'src/testing/events/events_mock_data';
 import { provideHttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 describe('EventService', () => {
   let service: EventService;

@@ -20,8 +20,8 @@ export class EventService {
 
   // Get a specific event by ID
   get(id: number): Observable<EventObject> {
-    return of(MOCK_EVENT);
     return this.http.get<EventObject>(`${this.apiUrl}/events/${id}`);
+    return of(MOCK_EVENT);
   }
 
   // Create a new event

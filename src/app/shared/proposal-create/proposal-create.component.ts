@@ -67,8 +67,6 @@ export class CreateProposalDialogComponent implements OnInit {
     if (this.proposalForm.valid) {
       const formValues = this.proposalForm.value;
 
-      console.log('event', formValues.event)
-
       const proposal: ProposalCreateRequest = {
         event_id: formValues.event.id,
         sponsor_id: this.sponsor.id,
