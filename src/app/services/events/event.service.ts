@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { EventObject } from '../../models/event.model';
 import { environment } from 'src/environments/environment';
-import { MOCK_EVENT } from 'src/testing/events/events.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +24,7 @@ export class EventService {
 
   // Get a specific event by ID
   get(id: number): Observable<EventObject> {
-    return this.http.get<EventObject>(`${this.apiUrl}/events/${id}`);
+    return this.http.get<EventObject>(`${this.apiUrl}${id}`);
   }
 
   // Create a new event

@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { SponsorServiceStub } from 'src/testing/sponsors/sponsors_service.stub';
 import { ProposalServiceStub } from 'src/testing/proposals/proposals_service.stub';
 import { EventServiceStub } from 'src/testing/events/event_service.stub';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthServiceStub } from 'src/testing/auth/auth_service.stub';
 
 xdescribe('ViewProposalComponent', () => {
   let component: ViewProposalComponent;
@@ -21,6 +23,7 @@ xdescribe('ViewProposalComponent', () => {
         { provide: SponsorService, useClass: SponsorServiceStub },
         { provide: EventService, useClass: EventServiceStub },
         { provide: ProposalService, useClass: ProposalServiceStub },
+        { provide: AuthService, useClass: AuthServiceStub },
       ],
     }).compileComponents();
 

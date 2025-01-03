@@ -18,7 +18,7 @@ export class ProposalsPage implements OnInit {
   proposals!: Proposal[];
   myProposals!: Proposal[];
   proposalsForMe!: Proposal[];
-  userId!: string
+  userId!: string;
   constructor(
     private route: ActivatedRoute,
     private modalController: ModalController,
@@ -43,7 +43,6 @@ export class ProposalsPage implements OnInit {
       });
     });
   }
-  
 
   async openProposal(proposal: Proposal) {
     const modal = await this.modalController.create({

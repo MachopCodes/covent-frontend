@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import { of } from 'rxjs';
 import { ProposalsPage } from './proposals.page';
 import { By } from '@angular/platform-browser';
@@ -8,14 +8,18 @@ import { Proposal } from 'src/app/models/proposal.model';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { AuthServiceStub } from 'src/testing/auth/auth_service.stub';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 describe('ProposalsPage', () => {
   let component: ProposalsPage;
   let fixture: ComponentFixture<ProposalsPage>;
+  let mockModalController: jasmine.SpyObj<ModalController>;
 
   const mockProposals: Proposal[] = [];
 
   beforeEach(async () => {
+    mockModalController = jasmine.createSpyObj('ModalController', ['create']);
     await TestBed.configureTestingModule({
       declarations: [ProposalsPage],
       imports: [IonicModule.forRoot(), HeaderComponent],
@@ -24,6 +28,8 @@ describe('ProposalsPage', () => {
           provide: ActivatedRoute,
           useValue: { data: of({ proposals: mockProposals }) },
         },
+        { provide: AuthService, useClass: AuthServiceStub },
+        { provide: ModalController, useValue: mockModalController },
         provideHttpClient(),
         provideHttpClientTesting(),
       ],

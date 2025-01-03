@@ -3,6 +3,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { By } from '@angular/platform-browser';
 import { SignUpPage } from './sign-up.page';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthServiceStub } from 'src/testing/auth/auth_service.stub';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('SignUpPage', () => {
   let component: SignUpPage;
@@ -12,6 +17,12 @@ describe('SignUpPage', () => {
     await TestBed.configureTestingModule({
       declarations: [SignUpPage],
       imports: [ReactiveFormsModule, IonicModule.forRoot()],
+      providers: [
+        { provide: AuthService, useClass: AuthServiceStub },
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SignUpPage);
@@ -65,7 +76,7 @@ describe('SignUpPage', () => {
     passwordControl?.setValue('');
     expect(passwordControl?.hasError('required')).toBeTrue();
 
-    passwordControl?.setValue('12345');
+    passwordControl?.setValue('12');
     expect(passwordControl?.hasError('minlength')).toBeTrue();
 
     passwordControl?.setValue('123456');

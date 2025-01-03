@@ -40,16 +40,5 @@ module.exports = function (config) {
         browsers: ['Chrome'],
         singleRun: false,
         restartOnFileChange: true,
-        exclude: [
-            "src/testing/**",
-            "src/**/*.stub.ts",
-            "src/**/*.mock.ts"
-        ],
-        files: [
-            { pattern: "src/**/*.spec.ts", watched: true },
-            { pattern: "!src/testing/**", watched: false },
-            { pattern: "!src/**/*.stub.ts", watched: false },
-            { pattern: "!src/**/*.mock.ts", watched: false }
-        ]
     });
 };

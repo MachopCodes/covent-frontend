@@ -70,6 +70,7 @@ describe('SponsorService', () => {
       topics: ['E-commerce', 'Supply Chain'],
       event_attendee_personas: ['Retailers', 'Suppliers'],
       key_objectives_for_event_sponsorship: ['Sales', 'Partnerships'],
+      user_id: 1,
     };
 
     service.create(newSponsor).subscribe((sponsor) => {

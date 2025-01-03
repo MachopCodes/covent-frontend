@@ -20,28 +20,24 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.authService.token$.subscribe(token => {
-      const t = this.authService.getToken()
-      this.isLoggedIn = !!token
-      if (!token) {
-        this.openLoginModal()
-      } 
-    })
+    this.authService.token$.subscribe((token) => {
+      this.isLoggedIn = !!token;
+      if (!token) this.authService.openLoginModal();
+    });
   }
 
   async openLoginModal() {
     if (!this.isLoggedIn) {
+      console.log('Opening login modal');
       const modal = await this.modalController.create({
         component: LoginModalComponent,
         backdropDismiss: false, // Disable dismiss by clicking outside
       });
-
       modal.onDidDismiss().then(() => {
         // After modal closes, check login status again
         const token = this.authService.getToken();
         this.isLoggedIn = !!token;
       });
-
       return await modal.present();
     }
   }

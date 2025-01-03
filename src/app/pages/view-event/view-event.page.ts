@@ -31,7 +31,7 @@ export class ViewEventPage implements OnInit {
   async openEventModal(event: EventObject) {
     const modal = await this.modalController.create({
       component: EditEventModalComponent,
-      componentProps: { event }, 
+      componentProps: { event },
     });
 
     modal
