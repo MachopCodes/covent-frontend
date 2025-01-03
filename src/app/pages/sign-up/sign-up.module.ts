@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SignUpPageRoutingModule } from './sign-up-routing.module';
 import { SignUpPage } from './sign-up.page';
+import { HeaderComponent } from 'src/app/shared/header/header.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { SignUpPage } from './sign-up.page';
     IonicModule,
     SignUpPageRoutingModule,
     ReactiveFormsModule,
+    HeaderComponent
   ],
   declarations: [SignUpPage],
 })

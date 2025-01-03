@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ErrorService } from 'src/app/services/error/error.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,22 +14,31 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignUpPage {
   signUpForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private errorService: ErrorService,
+    private loaderService: LoaderService,
+    private router: Router
+  ) {
     this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
-  onSubmit() {
-    if (this.signUpForm.valid) {
-      const { name, email, password } = this.signUpForm.value;
-      console.log('Sign-Up Data:', { name, email, password });
 
-      // Here, you would typically send this data to your backend
-    } else {
-      console.log('Form is invalid');
-    }
+  onSubmit() {
+    if (this.signUpForm.valid) this.signIn();
+  }
+
+  private signIn() {
+    this.loaderService.show();
+    this.authService.register(this.signUpForm.value).subscribe({
+      next: () => this.router.navigateByUrl("/"),
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide(),
+    });
   }
 }

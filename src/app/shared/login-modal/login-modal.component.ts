@@ -8,8 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
+import { ErrorService } from 'src/app/services/error/error.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -29,7 +31,10 @@ export class LoginModalComponent {
   constructor(
     private modalController: ModalController,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private loaderService: LoaderService,
+    private errorService: ErrorService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
@@ -43,17 +48,20 @@ export class LoginModalComponent {
 
   login() {
     if (this.loginForm.valid) {
+      this.loaderService.show()
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => console.log('response', response),
-        complete: () => null
+        error: (error) => this.errorService.handleError(error),
+        complete: () => this.loaderService.hide()
       })
-      this.dismiss();
+      this.dismiss()
     } else {
       console.log('Form is invalid');
     }
   }
 
-  closeModal() {
-    this.modalController.dismiss(); // Dismiss the currently open modal
+  async closeModal() {
+    await this.modalController.dismiss(); // Wait for the modal to dismiss
+    this.router.navigate(['sign-up']); // Navigate after the modal is closed
   }
 }

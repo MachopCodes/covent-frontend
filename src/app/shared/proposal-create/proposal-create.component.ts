@@ -14,6 +14,8 @@ import { EventService } from 'src/app/services/events/event.service';
 import { EventObject } from 'src/app/models/event.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ErrorService } from 'src/app/services/error/error.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-proposal-create',
@@ -36,15 +38,22 @@ export class CreateProposalDialogComponent implements OnInit {
     private modalController: ModalController,
     private formBuilder: FormBuilder,
     private proposalService: ProposalService,
-    private eventService: EventService
+    private eventService: EventService,
+    private loaderService: LoaderService,
+    private errorService: ErrorService
   ) {}
 
   ngOnInit(): void {
     this.initializeForm();
-    this.eventService.index().subscribe({
+    this.getEvents()
+  }
+
+  private getEvents() {
+    this.loaderService.show()
+    this.eventService.getMyEvents().subscribe({
       next: (events) => (this.events = events),
-      error: (error) => console.error('Error fetching events:', error),
-      complete: () => null,
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide(),
     });
   }
 
@@ -53,7 +62,6 @@ export class CreateProposalDialogComponent implements OnInit {
     this.proposalForm = this.formBuilder.group({
       event: [null, [Validators.required]],
       notes: ['', [Validators.required]],
-      contactInfo: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -72,7 +80,7 @@ export class CreateProposalDialogComponent implements OnInit {
         sponsor_id: this.sponsor.id,
         owner_id: 1, // Replace with logged-in user's ID
         notes: formValues.notes,
-        contact_info: formValues.contactInfo,
+        contact_info: formValues.event.contact_info,
         status: 'PENDING',
         event_snapshot: {
           name: formValues.event.name,
@@ -84,11 +92,18 @@ export class CreateProposalDialogComponent implements OnInit {
         },
       };
 
-      this.proposalService.createProposal(proposal).subscribe({
-        next: (response) => this.modalController.dismiss(response),
-        error: (error) => console.error('Error creating proposal:', error),
-        complete: () => null,
-      });
+      this.createProposal(proposal)
+      
     }
+  }
+
+  private createProposal (req: ProposalCreateRequest) {
+    this.loaderService.show()
+    this.proposalService.createProposal(req).subscribe({
+      next: (response) => this.modalController.dismiss(response),
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide(),
+    });
+
   }
 }

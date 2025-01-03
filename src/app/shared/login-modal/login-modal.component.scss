@@ -10,3 +10,24 @@
     cursor: pointer;
   }
 }
+
+.image {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-img {
+    width: 50%;
+  }
+}
+
+.error {
+  color: var(--ion-color-danger);
+  font-size: 0.85rem;
+  margin: 0.5rem 1rem;
+}
+
+
+form {
+  margin: 50px
+}

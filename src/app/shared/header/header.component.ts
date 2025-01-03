@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
   imports: [IonicModule, CommonModule, LoginComponent, RouterModule],
 })
 export class HeaderComponent implements OnInit {
+  @Input() showLogin = true 
   @Input() back!: string;
   @Input() title!: string;
   constructor() {}

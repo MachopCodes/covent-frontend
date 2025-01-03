@@ -13,7 +13,7 @@ describe('EventService', () => {
   let service: EventService;
   let httpMock: HttpTestingController;
 
-  const apiUrl = `${environment.apiUrl}/events`;
+  const apiUrl = `${environment.apiUrl}/events/`;
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideHttpClient(), provideHttpClientTesting()],
@@ -34,7 +34,6 @@ describe('EventService', () => {
     service.index().subscribe((events) => {
       expect(events).toBeDefined();
     });
-
     const req = httpMock.expectOne(`${apiUrl}`);
     expect(req.request.method).toBe('GET');
     req.flush(MOCK_EVENT_DATA); // Respond with mock data
@@ -44,8 +43,7 @@ describe('EventService', () => {
     service.get(MOCK_EVENT.id).subscribe((event) => {
       expect(event).toBeDefined();
     });
-
-    const req = httpMock.expectOne(`${apiUrl}/${MOCK_EVENT.id}`);
+    const req = httpMock.expectOne(`${apiUrl}${MOCK_EVENT.id}`);
     expect(req.request.method).toBe('GET');
     req.flush(MOCK_EVENT); // Respond with mock data
   });
@@ -80,7 +78,7 @@ describe('EventService', () => {
       expect(event.name).toEqual(updatedEvent.name!);
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/1`);
+    const req = httpMock.expectOne(`${apiUrl}1`);
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(updatedEvent);
     req.flush({ ...MOCK_EVENT, ...updatedEvent }); // Respond with updated mock data
@@ -93,7 +91,7 @@ describe('EventService', () => {
       expect(response).toBeUndefined(); // Delete request returns void
     });
 
-    const req = httpMock.expectOne(`${apiUrl}/${eventId}`);
+    const req = httpMock.expectOne(`${apiUrl}${eventId}`);
     expect(req.request.method).toBe('DELETE');
   });
 });

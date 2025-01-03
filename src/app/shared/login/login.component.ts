@@ -20,22 +20,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Check if the user is logged in by checking the token
-    this.sub.add(
-      this.authService.token$.subscribe((token) => {
-        this.isLoggedIn = !!token; // Set isLoggedIn to true if a token exists
-      })
-    );
-
-    // Alternatively, directly check the token in localStorage during initialization
-    const token = this.authService.getToken();
-    this.isLoggedIn = !!token;
+    this.authService.token$.subscribe(token => {
+      const t = this.authService.getToken()
+      this.isLoggedIn = !!token
+      if (!token) {
+        this.openLoginModal()
+      } 
+    })
   }
 
   async openLoginModal() {
     if (!this.isLoggedIn) {
       const modal = await this.modalController.create({
         component: LoginModalComponent,
+        backdropDismiss: false, // Disable dismiss by clicking outside
       });
 
       modal.onDidDismiss().then(() => {

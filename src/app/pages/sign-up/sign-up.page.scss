@@ -3,3 +3,18 @@
   font-size: 0.85rem;
   margin: 0.5rem 1rem;
 }
+
+
+form {
+  margin: 100px
+}
+
+.image {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-img {
+    width: 50%;
+  }
+}

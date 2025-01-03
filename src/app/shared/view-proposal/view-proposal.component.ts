@@ -11,6 +11,7 @@ import { ErrorService } from 'src/app/services/error/error.service';
 import { EventService } from 'src/app/services/events/event.service';
 import { ProposalService } from 'src/app/services/proposals/proposal.service';
 import { SponsorService } from 'src/app/services/sponsors/sponsor.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-view-proposal',
@@ -23,6 +24,7 @@ export class ViewProposalComponent implements OnInit {
   @Input() proposal!: Proposal;
   sponsor!: Sponsor;
   event!: EventObject;
+  userId!: string
 
   constructor(
     private sponsorService: SponsorService,
@@ -30,10 +32,17 @@ export class ViewProposalComponent implements OnInit {
     private modalController: ModalController,
     private proposalService: ProposalService,
     private loaderService: LoaderService,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.userId = this.authService.getUser()!
+    this.fetchData()
+  }
+
+  private fetchData() {
+    this.loaderService.show()
     forkJoin({
       sponsor: this.sponsorService.get(this.proposal.sponsor_id),
       event: this.eventService.get(this.proposal.event_id),
@@ -42,7 +51,8 @@ export class ViewProposalComponent implements OnInit {
         this.sponsor = sponsor;
         this.event = event;
       },
-      error: (error) => console.error('Error fetching proposal:', error),
+      error: (error) => this.errorService.handleError(error),
+      complete: () => this.loaderService.hide()
     });
   }
 
@@ -53,7 +63,6 @@ export class ViewProposalComponent implements OnInit {
       error: (error) => this.errorService.handleError(error),
       complete: () => this.loaderService.hide(),
     });
-    // API call to save the updated status can be implemented here
   }
 
   dismiss() {

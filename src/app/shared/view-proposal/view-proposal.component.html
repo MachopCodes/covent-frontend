@@ -32,6 +32,7 @@
           [(ngModel)]="proposal.status"
           (ionChange)="saveStatus()"
           interface="popover"
+          [disabled]="+userId === proposal.owner_id"
         >
           <ion-select-option value="APPROVED">APPROVED</ion-select-option>
           <ion-select-option value="PENDING">PENDING</ion-select-option>
