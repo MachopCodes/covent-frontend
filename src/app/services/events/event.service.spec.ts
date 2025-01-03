@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { EventService } from './event.service';
 import { EventObject } from '../../models/event.model';
-import { MOCK_EVENT } from 'src/testing/events/events_mock_data';
+import { MOCK_EVENT, MOCK_EVENT_DATA } from 'src/testing/events/events.mock';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -35,9 +35,9 @@ describe('EventService', () => {
       expect(events).toBeDefined();
     });
 
-    // const req = httpMock.expectOne(`${apiUrl}`);
-    // expect(req.request.method).toBe('GET');
-    // req.flush(MOCK_EVENT_DATA); // Respond with mock data
+    const req = httpMock.expectOne(`${apiUrl}`);
+    expect(req.request.method).toBe('GET');
+    req.flush(MOCK_EVENT_DATA); // Respond with mock data
   });
 
   it('should fetch a specific event by ID (get)', () => {
@@ -45,9 +45,9 @@ describe('EventService', () => {
       expect(event).toBeDefined();
     });
 
-    // const req = httpMock.expectOne(`${apiUrl}/${MOCK_EVENT.id}`);
-    // expect(req.request.method).toBe('GET');
-    // req.flush(MOCK_EVENT); // Respond with mock data
+    const req = httpMock.expectOne(`${apiUrl}/${MOCK_EVENT.id}`);
+    expect(req.request.method).toBe('GET');
+    req.flush(MOCK_EVENT); // Respond with mock data
   });
 
   it('should create a new event (create)', () => {

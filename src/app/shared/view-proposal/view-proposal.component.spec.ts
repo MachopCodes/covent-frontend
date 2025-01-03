@@ -3,16 +3,12 @@ import { ViewProposalComponent } from './view-proposal.component';
 import { SponsorService } from 'src/app/services/sponsors/sponsor.service';
 import { EventService } from 'src/app/services/events/event.service';
 import { ProposalService } from 'src/app/services/proposals/proposal.service';
-import { LoaderService } from 'src/app/services/loader/loader.service';
-import { ErrorService } from 'src/app/services/error/error.service';
-import { IonicModule, ModalController, AngularDelegate } from '@ionic/angular';
-import { InjectionToken } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { of, throwError } from 'rxjs';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { SponsorServiceStub } from 'src/testing/sponsors/sponsors_service_stub';
-import { ProposalServiceStub } from 'src/testing/proposals/proposals_service_stub';
-import { EventServiceStub } from 'src/testing/events/event_service_stub';
+import { SponsorServiceStub } from 'src/testing/sponsors/sponsors_service.stub';
+import { ProposalServiceStub } from 'src/testing/proposals/proposals_service.stub';
+import { EventServiceStub } from 'src/testing/events/event_service.stub';
 
 xdescribe('ViewProposalComponent', () => {
   let component: ViewProposalComponent;

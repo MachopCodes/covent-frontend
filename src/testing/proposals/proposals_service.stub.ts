@@ -6,7 +6,7 @@ import {
   MOCK_PROPOSAL_APPROVED,
   MOCK_PROPOSAL_PENDING,
   MOCK_PROPOSAL_REJECTED,
-} from 'src/testing/proposals/proposals_mock_data';
+} from 'src/testing/proposals/proposals.mock';
 
 @Injectable({
   providedIn: 'root',

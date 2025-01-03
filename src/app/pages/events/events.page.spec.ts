@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { EventsPage } from './events.page';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { MOCK_EVENT_DATA } from 'src/testing/events/events_mock_data';
+import { MOCK_EVENT_DATA } from 'src/testing/events/events.mock';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';

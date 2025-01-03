@@ -5,11 +5,11 @@ import { of } from 'rxjs';
 import { ViewEventPage } from './view-event.page';
 import { EventService } from 'src/app/services/events/event.service';
 import { EditEventModalComponent } from 'src/app/shared/edit-event-modal/edit-event-modal.component';
-import { MOCK_EVENT } from 'src/testing/events/events_mock_data';
-import { EventServiceStub } from 'src/testing/events/event_service_stub';
+import { MOCK_EVENT } from 'src/testing/events/events.mock';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { EventServiceStub } from 'src/testing/events/event_service.stub';
 
 describe('ViewEventPage', () => {
   let component: ViewEventPage;

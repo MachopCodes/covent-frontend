@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Sponsor } from 'src/app/models/sponsor.model';
-import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors.mock';
 
 @Injectable({
   providedIn: 'root',

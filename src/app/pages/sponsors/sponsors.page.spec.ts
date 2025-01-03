@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { SponsorsPage } from './sponsors.page';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors.mock';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';

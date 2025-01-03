@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { SponsorService } from './sponsor.service';
 import { Sponsor } from 'src/app/models/sponsor.model';
-import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors.mock';
 import { provideHttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 

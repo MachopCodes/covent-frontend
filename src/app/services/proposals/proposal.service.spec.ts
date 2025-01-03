@@ -11,7 +11,7 @@ import {
   MOCK_PROPOSAL_CREATE_REQUEST,
   MOCK_PROPOSAL_PENDING,
   MOCK_PROPOSAL_REJECTED,
-} from 'src/testing/proposals/proposals_mock_data';
+} from 'src/testing/proposals/proposals.mock';
 import { provideHttpClient } from '@angular/common/http';
 
 describe('ProposalService', () => {

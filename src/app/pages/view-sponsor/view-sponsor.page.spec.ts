@@ -5,7 +5,7 @@ import { ActivatedRoute, provideRouter, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { ViewSponsorPage } from './view-sponsor.page';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
-import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors.mock';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 

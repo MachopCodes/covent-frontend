@@ -5,17 +5,14 @@ import { of, throwError } from 'rxjs';
 import { CreateProposalDialogComponent } from './proposal-create.component';
 import { ProposalService } from 'src/app/services/proposals/proposal.service';
 import { EventService } from 'src/app/services/events/event.service';
-import { ProposalServiceStub } from 'src/testing/proposals/proposals_service_stub';
-import { EventServiceStub } from 'src/testing/events/event_service_stub';
-import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors_mock_data';
-import {
-  MOCK_EVENT,
-  MOCK_EVENT_DATA,
-} from 'src/testing/events/events_mock_data';
+import { ProposalServiceStub } from 'src/testing/proposals/proposals_service.stub';
+import { MOCK_SPONSORS } from 'src/testing/sponsors/sponsors.mock';
+import { MOCK_EVENT, MOCK_EVENT_DATA } from 'src/testing/events/events.mock';
 import { By } from '@angular/platform-browser';
-import { MOCK_PROPOSAL_APPROVED } from 'src/testing/proposals/proposals_mock_data';
+import { MOCK_PROPOSAL_APPROVED } from 'src/testing/proposals/proposals.mock';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { EventServiceStub } from 'src/testing/events/event_service.stub';
 
 xdescribe('Create Proposal Component', () => {
   let component: CreateProposalDialogComponent;
